@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  height: 80px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+header div {
+  margin-top: 10px;
+  margin-left: 22px;
+  margin-right: 22.41px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  width: 75px;
+  height: 53px;
+}
+
+header ion-icon {
+  font-size: 56px;
+}
+
+main {
+  margin-top: 80px;
+  height: calc(100vh - 160px);
+  background-color: #e5e5e5;
+  margin-bottom: 80px;
+}
+
+footer {
+  height: 80px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer div {
+  margin-top: 25px;
+  margin-left: 17px;
+  margin-right: 18px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer input {
+  border: none;
+}
+
+footer input:focus {
+  outline: 0;
+}
+
+footer input::placeholder {
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 21.09px;
+}
+
+footer ion-icon {
+  font-size: 26px;
+  color: #000000;
+}
+
+/* bônus */
+aside {
+  display: none;
+  height: 100vh;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  background-color: #ffffff;
+}

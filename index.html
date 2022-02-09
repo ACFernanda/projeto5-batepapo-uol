@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bate-Papo UOL</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div>
+        <img src="images/logo.png" alt="logo" />
+        <ion-icon
+          onclick="showSidebar()"
+          class="people-icon"
+          name="people"
+        ></ion-icon>
+      </div>
+    </header>
+    <main></main>
+    <aside>
+      <p class="aside-titles">Escolha um contato para enviar mensagem:</p>
+      <div class="aside-option">
+        <ion-icon class="people-icon" name="people"></ion-icon>
+        <span>Todos</span>
+      </div>
+      <div class="aside-option">
+        <ion-icon name="person-circle"></ion-icon>
+        <span>João</span>
+      </div>
+      <p class="aside-titles">Escolha a visibilidade:</p>
+      <div class="aside-option">
+        <ion-icon name="lock-open"></ion-icon>
+        <span>Público</span>
+      </div>
+      <div class="aside-option">
+        <ion-icon name="lock-closed"></ion-icon>
+        <span>Reservadamente</span>
+      </div>
+    </aside>
+
+    <footer>
+      <div>
+        <input
+          class="caixa-comentario"
+          type="text"
+          name="input"
+          placeholder="Escreva aqui..."
+        />
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  </body>
 </html>
