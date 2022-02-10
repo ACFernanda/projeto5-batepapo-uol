@@ -25,7 +25,21 @@
         ></ion-icon>
       </div>
     </header>
-    <main></main>
+
+    <main>
+      <div class="all-messages"></div>
+    </main>
+
+    <footer>
+      <input
+        class="caixa-comentario"
+        type="text"
+        name="input"
+        placeholder="Escreva aqui..."
+      />
+      <ion-icon onclick="sendMessage()" name="paper-plane-outline"></ion-icon>
+    </footer>
+
     <aside>
       <p class="aside-titles">Escolha um contato para enviar mensagem:</p>
       <div class="aside-option">
@@ -46,18 +60,6 @@
         <span>Reservadamente</span>
       </div>
     </aside>
-
-    <footer>
-      <div>
-        <input
-          class="caixa-comentario"
-          type="text"
-          name="input"
-          placeholder="Escreva aqui..."
-        />
-        <ion-icon name="paper-plane-outline"></ion-icon>
-      </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
