@@ -1,7 +1,24 @@
-function login() {
-  let user = prompt("Qual seu nome?");
+let user = "";
+
+function newUser() {
+  user = prompt("Qual é seu nome?");
+  const promise = axios.post(
+    "https://mock-api.driven.com.br/api/v4/uol/participants",
+    { name: user }
+  );
+  promise.then(login);
+  promise.catch(newUsername);
 }
-login();
+newUser();
+
+function login() {
+  getMessages();
+}
+
+function newUsername() {
+  alert("Este nome já está em uso.");
+  newUser();
+}
 
 function getMessages() {
   const promise = axios.get(
@@ -9,9 +26,6 @@ function getMessages() {
   );
   promise.then(renderMessages);
 }
-
-getMessages();
-
 setInterval(getMessages, 3000);
 
 function renderMessages(response) {
