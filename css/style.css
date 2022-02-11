@@ -34,12 +34,8 @@ header ion-icon {
 }
 
 main {
-  margin-top: 80px;
+  margin-top: 84px;
   margin-bottom: 85px;
-}
-
-.all-messages {
-  margin-top: 106px;
 }
 
 .message-box {
@@ -48,6 +44,13 @@ main {
   background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.message-box p {
+  font-size: 14px;
+  margin-left: 8px;
+  line-height: 20px;
 }
 
 .login-logout {
@@ -56,6 +59,12 @@ main {
 
 .private {
   background-color: #ffdede;
+}
+
+time {
+  font-size: 14px;
+  font-weight: 400;
+  color: #aaaaaa;
 }
 
 span {
