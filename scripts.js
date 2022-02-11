@@ -1,4 +1,7 @@
 let user = "";
+let inputMessage = document.querySelector("footer input");
+
+newUser();
 
 function newUser() {
   user = prompt("Qual é seu nome?");
@@ -9,14 +12,13 @@ function newUser() {
   promise.then(login);
   promise.catch(newUsername);
 }
-newUser();
 
 function login() {
   getMessages();
 }
 
 function newUsername() {
-  alert("Este nome já está em uso.");
+  alert("Tente outro nome!");
   newUser();
 }
 
@@ -43,7 +45,7 @@ function renderMessages(response) {
         <p><time>(${message.time})</time>
     <span>${message.from}</span> para <span>${message.to}</span>: ${message.text}</p>
   </div>`;
-    } else if (message.type === "private_message") {
+    } else if (message.type === "private_message" && message.to === user) {
       allMessagesInnerHtml =
         allMessagesInnerHtml +
         `<div data-identifier="message" class="message-box private">
@@ -66,3 +68,36 @@ function renderMessages(response) {
 function scrollToEnd() {
   window.scrollTo(0, document.body.scrollHeight);
 }
+
+function sendMessage() {
+  let objMessage = {
+    from: user,
+    to: "Todos",
+    text: inputMessage.value,
+    type: "message",
+  };
+  const promise = axios.post(
+    "https://mock-api.driven.com.br/api/v4/uol/messages",
+    objMessage
+  );
+  promise.then(getMessages);
+  promise.catch(failed);
+
+  inputMessage.value = "";
+}
+
+function failed() {
+  alert("Faça login novamente.");
+  window.location.reload();
+}
+
+function keepOnline() {
+  const promise = axios.post(
+    "https://mock-api.driven.com.br/api/v4/uol/status",
+    {
+      name: user,
+    }
+  );
+}
+keepOnline();
+setInterval(keepOnline, 5000);
