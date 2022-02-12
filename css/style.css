@@ -117,7 +117,6 @@ footer ion-icon {
   margin-right: 18px;
 }
 
-/* bônus */
 aside {
   height: 100vh;
   z-index: 10;
@@ -127,6 +126,16 @@ aside {
   bottom: 0;
   width: 250px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+aside.info {
+  overflow-y: scroll;
+}
+
+aside ion-icon {
+  font-size: 20px;
 }
 
 .aside-container {
@@ -143,14 +152,24 @@ h3.aside-titles {
   text-align: center;
 }
 
+div.participants-container {
+  display: flex;
+  flex-direction: column;
+}
+
 div.aside-option {
-  margin-left: 10px;
+  margin-left: 12px;
+  margin-top: 6px;
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
 }
 
 h4 {
+  font-size: 16px;
   display: inline;
   margin-left: 6px;
+  word-break: break-all;
 }
 
 .hide {

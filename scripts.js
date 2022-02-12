@@ -126,3 +126,37 @@ function hideSidebar() {
     sidebar.classList.add("hide");
   }
 }
+
+function getParticipants() {
+  const promise = axios.get(
+    "https://mock-api.driven.com.br/api/v4/uol/participants"
+  );
+  promise.then(renderParticipants);
+  promise.catch(showError);
+}
+
+function renderParticipants(response) {
+  const allParticipants = response.data;
+  const participantsContainer = document.querySelector(
+    ".participants-container"
+  );
+  let participantsInnerHTML = "";
+
+  for (let i = 0; i < allParticipants.length; i++) {
+    const participant = allParticipants[i];
+    participantsInnerHTML =
+      participantsInnerHTML +
+      `<div class="aside-option">
+    <ion-icon name="person-circle"></ion-icon>
+    <h4>${participant.name}</h4>
+    </div>`;
+  }
+  participantsContainer.innerHTML = participantsInnerHTML;
+}
+
+function showError(error) {
+  console.log(error);
+}
+
+getParticipants();
+//setInterval(getParticipants, 10000);
