@@ -5,6 +5,7 @@ newUser();
 
 function newUser() {
   user = prompt("Qual é seu nome?");
+
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/v4/uol/participants",
     { name: user }
@@ -15,6 +16,7 @@ function newUser() {
 
 function login() {
   getMessages();
+  setInterval(getMessages, 3000);
 }
 
 function newUsername() {
@@ -28,7 +30,6 @@ function getMessages() {
   );
   promise.then(renderMessages);
 }
-setInterval(getMessages, 3000);
 
 function renderMessages(response) {
   const allMessages = response.data;
@@ -66,7 +67,7 @@ function renderMessages(response) {
 }
 
 function scrollToEnd() {
-  window.scrollTo(0, document.body.scrollHeight);
+  window.scrollTo(000, document.body.scrollHeight);
 }
 
 function sendMessage() {
@@ -85,6 +86,14 @@ function sendMessage() {
 
   inputMessage.value = "";
 }
+
+const input = document.querySelector("footer input");
+input.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.querySelector("footer ion-icon").click();
+  }
+});
 
 function failed() {
   alert("Faça login novamente.");
