@@ -119,13 +119,51 @@ footer ion-icon {
 
 /* bônus */
 aside {
-  display: none;
   height: 100vh;
   z-index: 10;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 75%;
+  width: 250px;
   background-color: #ffffff;
+}
+
+.aside-container {
+  display: flex;
+  flex-direction: row;
+}
+
+h3.aside-titles {
+  width: 190px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18.75px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+div.aside-option {
+  margin-left: 10px;
+  margin-bottom: 6px;
+}
+
+h4 {
+  display: inline;
+  margin-left: 6px;
+}
+
+.hide {
+  display: none;
+}
+
+.dark-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: calc(100vw - 250px);
+  height: 100%;
+  z-index: 15;
+  background-color: rgba(0, 0, 0, 0.6);
 }

@@ -110,3 +110,19 @@ function keepOnline() {
 }
 keepOnline();
 setInterval(keepOnline, 5000);
+
+function showSidebar() {
+  const sidebar = document.querySelector(".aside-container.hide");
+  if (sidebar !== null) {
+    sidebar.classList.remove("hide");
+    sidebar.classList.add("show");
+  }
+}
+
+function hideSidebar() {
+  const sidebar = document.querySelector(".aside-container.show");
+  if (sidebar !== null) {
+    sidebar.classList.remove("show");
+    sidebar.classList.add("hide");
+  }
+}
