@@ -1,25 +1,25 @@
-let user = "";
+let user = document.querySelector(".name");
 let inputMessage = document.querySelector("footer input");
 
-newUser();
-
 function newUser() {
-  user = prompt("Qual é seu nome?");
+  user = user.value;
 
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/v4/uol/participants",
     { name: user }
   );
   promise.then(login);
-  promise.catch(newUsername);
+  promise.catch(usernameFailed);
 }
 
 function login() {
+  const loginPage = document.querySelector(".login-page");
+  loginPage.classList.add("hide");
   getMessages();
   setInterval(getMessages, 3000);
 }
 
-function newUsername() {
+function usernameFailed() {
   alert("Tente outro nome!");
   newUser();
 }
@@ -146,7 +146,7 @@ function renderParticipants(response) {
     const participant = allParticipants[i];
     participantsInnerHTML =
       participantsInnerHTML +
-      `<div class="aside-option">
+      `<div class="aside-option" data-identifier="participant">
     <ion-icon name="person-circle"></ion-icon>
     <h4>${participant.name}</h4>
     </div>`;
@@ -159,4 +159,4 @@ function showError(error) {
 }
 
 getParticipants();
-//setInterval(getParticipants, 10000);
+setInterval(getParticipants, 10000);

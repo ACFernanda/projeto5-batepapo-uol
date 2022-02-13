@@ -15,6 +15,25 @@
     <title>Bate-Papo UOL</title>
   </head>
   <body>
+    <div class="login-page">
+      <img src="images/logo.png" alt="logo" />
+      <input
+        type="text"
+        class="name"
+        name="name"
+        required
+        minlength="1"
+        size="10"
+        placeholder="Digite seu nome"
+      />
+      <input
+        onclick="newUser()"
+        class="login-button"
+        type="button"
+        value="Entrar"
+      />
+    </div>
+
     <header>
       <div>
         <img src="images/logo.png" alt="logo" />
@@ -54,11 +73,11 @@
         </div>
         <div class="participants-container"></div>
         <h3 class="aside-titles">Escolha a visibilidade:</h3>
-        <div class="aside-option">
+        <div class="aside-option" data-identifier="visibility">
           <ion-icon name="lock-open"></ion-icon>
           <h4>Público</h4>
         </div>
-        <div class="aside-option">
+        <div class="aside-option" data-identifier="visibility">
           <ion-icon name="lock-closed"></ion-icon>
           <h4>Reservadamente</h4>
         </div>
