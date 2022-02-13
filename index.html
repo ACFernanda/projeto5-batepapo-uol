@@ -18,6 +18,7 @@
     <div class="login-page">
       <img src="images/logo.png" alt="logo" />
       <input
+        data-identifier="enter-name"
         type="text"
         class="name"
         name="name"
@@ -27,6 +28,7 @@
         placeholder="Digite seu nome"
       />
       <input
+        data-identifier="start"
         onclick="newUser()"
         class="login-button"
         type="button"
@@ -61,6 +63,7 @@
         onclick="sendMessage()"
         name="paper-plane-outline"
       ></ion-icon>
+      <p>Enviando para Todos (publicamente)</p>
     </footer>
 
     <div class="aside-container hide">
@@ -70,16 +73,28 @@
         <div class="aside-option">
           <ion-icon class="people-icon" name="people"></ion-icon>
           <h4>Todos</h4>
+          <ion-icon class="check selected" name="checkmark-sharp"></ion-icon>
         </div>
         <div class="participants-container"></div>
+
         <h3 class="aside-titles">Escolha a visibilidade:</h3>
-        <div class="aside-option" data-identifier="visibility">
+        <div
+          class="aside-option visibility selected"
+          data-identifier="visibility"
+          onclick="selectVisibility(this)"
+        >
           <ion-icon name="lock-open"></ion-icon>
           <h4>Público</h4>
+          <ion-icon class="check" name="checkmark-sharp"></ion-icon>
         </div>
-        <div class="aside-option" data-identifier="visibility">
+        <div
+          class="aside-option visibility"
+          data-identifier="visibility"
+          onclick="selectVisibility(this)"
+        >
           <ion-icon name="lock-closed"></ion-icon>
           <h4>Reservadamente</h4>
+          <ion-icon class="check" name="checkmark-sharp"></ion-icon>
         </div>
       </aside>
     </div>
