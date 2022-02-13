@@ -70,7 +70,11 @@
       <div class="dark-background" onclick="hideSidebar()"></div>
       <aside class="info">
         <h3 class="aside-titles">Escolha um contato para enviar mensagem:</h3>
-        <div class="aside-option">
+        <div
+          class="aside-option contact selected"
+          data-identifier="participant"
+          onclick="selectContact(this)"
+        >
           <ion-icon class="people-icon" name="people"></ion-icon>
           <h4>Todos</h4>
           <ion-icon class="check selected" name="checkmark-sharp"></ion-icon>

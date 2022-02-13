@@ -146,7 +146,7 @@ function renderParticipants(response) {
     const participant = allParticipants[i];
     participantsInnerHTML =
       participantsInnerHTML +
-      `<div class="aside-option" data-identifier="participant">
+      `<div class="aside-option contact" data-identifier="participant" onclick="selectContact(this)">
     <ion-icon name="person-circle"></ion-icon>
     <h4>${participant.name}</h4>
     <ion-icon class="check" name="checkmark-sharp"></ion-icon>
@@ -164,6 +164,14 @@ setInterval(getParticipants, 10000);
 
 function selectVisibility(option) {
   const checkMark = document.querySelector(".aside-option.visibility.selected");
+  if (checkMark !== null) {
+    checkMark.classList.remove("selected");
+  }
+  option.classList.add("selected");
+}
+
+function selectContact(option) {
+  const checkMark = document.querySelector(".aside-option.contact.selected");
   if (checkMark !== null) {
     checkMark.classList.remove("selected");
   }

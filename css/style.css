@@ -183,6 +183,17 @@ h4 {
   word-break: break-all;
 }
 
+.contact.selected .check {
+  color: #28bb25;
+}
+
+.contact .check {
+  color: #ffffff;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+}
+
 .visibility.selected .check {
   color: #28bb25;
 }
