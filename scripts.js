@@ -1,5 +1,6 @@
 let user = document.querySelector(".name");
 let inputMessage = document.querySelector("footer input");
+let visibility = "";
 
 function newUser() {
   user = user.value;
@@ -21,7 +22,7 @@ function login() {
 
 function usernameFailed() {
   alert("Tente outro nome!");
-  newUser();
+  window.location.reload();
 }
 
 function getMessages() {
@@ -162,14 +163,6 @@ function showError(error) {
 getParticipants();
 setInterval(getParticipants, 10000);
 
-function selectVisibility(option) {
-  const checkMark = document.querySelector(".aside-option.visibility.selected");
-  if (checkMark !== null) {
-    checkMark.classList.remove("selected");
-  }
-  option.classList.add("selected");
-}
-
 function selectContact(option) {
   const checkMark = document.querySelector(".aside-option.contact.selected");
   if (checkMark !== null) {
@@ -177,3 +170,21 @@ function selectContact(option) {
   }
   option.classList.add("selected");
 }
+
+function selectVisibility(option) {
+  const checkMark = document.querySelector(".aside-option.visibility.selected");
+  if (checkMark !== null) {
+    checkMark.classList.remove("selected");
+  }
+  option.classList.add("selected");
+
+  saveVisibility();
+}
+
+function saveVisibility() {
+  const visibilityOption = document.querySelector(
+    ".aside-option.visibility.selected h4"
+  );
+  visibility = visibilityOption.innerHTML;
+}
+saveVisibility();
