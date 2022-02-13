@@ -1,6 +1,9 @@
 let user = document.querySelector(".name");
 let inputMessage = document.querySelector("footer input");
 let visibility = "";
+let type = "";
+let contact = "";
+let information = document.querySelector("footer p");
 
 function newUser() {
   user = user.value;
@@ -18,6 +21,8 @@ function login() {
   loginPage.classList.add("hide");
   getMessages();
   setInterval(getMessages, 3000);
+  keepOnline();
+  setInterval(keepOnline, 5000);
 }
 
 function usernameFailed() {
@@ -47,7 +52,10 @@ function renderMessages(response) {
         <p><time>(${message.time})</time>
     <span>${message.from}</span> para <span>${message.to}</span>: ${message.text}</p>
   </div>`;
-    } else if (message.type === "private_message" && message.to === user) {
+    } else if (
+      message.type === "private_message" &&
+      (message.to === user || message.from === user)
+    ) {
       allMessagesInnerHtml =
         allMessagesInnerHtml +
         `<div data-identifier="message" class="message-box private">
@@ -74,9 +82,9 @@ function scrollToEnd() {
 function sendMessage() {
   let objMessage = {
     from: user,
-    to: "Todos",
+    to: contact,
     text: inputMessage.value,
-    type: "message",
+    type: type,
   };
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/v4/uol/messages",
@@ -109,8 +117,6 @@ function keepOnline() {
     }
   );
 }
-keepOnline();
-setInterval(keepOnline, 5000);
 
 function showSidebar() {
   const sidebar = document.querySelector(".aside-container.hide");
@@ -163,12 +169,15 @@ function showError(error) {
 getParticipants();
 setInterval(getParticipants, 10000);
 
-function selectContact(option) {
+function selectContact(contactOption) {
   const checkMark = document.querySelector(".aside-option.contact.selected");
   if (checkMark !== null) {
     checkMark.classList.remove("selected");
   }
-  option.classList.add("selected");
+  contactOption.classList.add("selected");
+
+  saveContact();
+  messageInformation();
 }
 
 function selectVisibility(option) {
@@ -179,12 +188,38 @@ function selectVisibility(option) {
   option.classList.add("selected");
 
   saveVisibility();
+  messageInformation();
 }
+
+function saveContact() {
+  const contactOption = document.querySelector(
+    ".aside-option.contact.selected h4"
+  );
+  contact = contactOption.innerHTML;
+}
+saveContact();
 
 function saveVisibility() {
   const visibilityOption = document.querySelector(
     ".aside-option.visibility.selected h4"
   );
   visibility = visibilityOption.innerHTML;
+
+  if (visibility === "Público") {
+    type = "message";
+  }
+
+  if (visibility === "Reservadamente") {
+    type = "private_message";
+  }
 }
 saveVisibility();
+
+function messageInformation() {
+  if (visibility === "Público") {
+    information.innerHTML = `Enviando para ${contact} (publicamente)`;
+  }
+  if (visibility === "Reservadamente") {
+    information.innerHTML = `Enviando para ${contact} (reservadamente)`;
+  }
+}
