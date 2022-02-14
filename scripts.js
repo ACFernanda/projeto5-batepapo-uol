@@ -7,7 +7,6 @@ let information = document.querySelector("footer p");
 
 function newUser() {
   user = user.value;
-
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/v4/uol/participants",
     { name: user }
@@ -15,6 +14,14 @@ function newUser() {
   promise.then(login);
   promise.catch(usernameFailed);
 }
+
+const inputLogin = document.querySelector("input.name");
+inputLogin.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.querySelector("input.login-button").click();
+  }
+});
 
 function login() {
   const loginPage = document.querySelector(".login-page");
@@ -160,14 +167,38 @@ function renderParticipants(response) {
     </div>`;
   }
   participantsContainer.innerHTML = participantsInnerHTML;
+  alwaysSelectSomeContact();
 }
 
 function showError(error) {
-  console.log(error);
+  alert("Algo deu errado ao buscar os participantes online :(");
 }
 
 getParticipants();
 setInterval(getParticipants, 10000);
+
+function alwaysSelectSomeContact() {
+  const allContactsNameOnline = document.querySelectorAll(
+    ".participants-container .aside-option.contact h4"
+  );
+  const contactTodos = document.querySelector(".aside-option.contact");
+  for (let i = 0; i < allContactsNameOnline.length; i++) {
+    let contactOnline = allContactsNameOnline[i];
+    if (contactOnline.innerHTML === contact) {
+      contactOnline.parentNode.classList.add("selected");
+    }
+  }
+
+  const selectedContact = document.querySelector(
+    ".aside-option.contact.selected"
+  );
+
+  if (selectedContact === null) {
+    contactTodos.classList.add("selected");
+    saveContact();
+    messageInformation();
+  }
+}
 
 function selectContact(contactOption) {
   const checkMark = document.querySelector(".aside-option.contact.selected");
