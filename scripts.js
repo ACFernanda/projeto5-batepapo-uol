@@ -61,7 +61,7 @@ function renderMessages(response) {
   </div>`;
     } else if (
       message.type === "private_message" &&
-      (message.to === user || message.from === user)
+      (message.to === user || message.from === user || message.to === "Todos")
     ) {
       allMessagesInnerHtml =
         allMessagesInnerHtml +
